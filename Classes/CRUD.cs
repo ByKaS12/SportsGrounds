@@ -12,7 +12,7 @@ namespace SportsGrounds.Classes
         }
         public void CreateMap(Map Map)
         {
-            if(_db.Maps.FirstOrDefault(u=>u.Id == Map.Id) == null)
+            if(_db.Maps.FirstOrDefault(u=>(u.Longitude == Map.Longitude) && (u.Latitude == Map.Latitude)) == null)
             {
                 _db.Maps.Add(Map);
                 _db.SaveChanges();
@@ -22,7 +22,7 @@ namespace SportsGrounds.Classes
 
         public void CreateUser(User User)
         {
-            if (_db.Users.FirstOrDefault(u => u.Id == User.Id) == null)
+            if (_db.Users.FirstOrDefault(u => u.NickName == User.NickName) == null)
             {
                 _db.Users.Add(User);
                 _db.SaveChanges();

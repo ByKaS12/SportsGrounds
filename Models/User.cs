@@ -20,11 +20,13 @@
     {
         public Guid Id { get; set; }
         public string Login { get; set; }
-        public string password { get; set; }
+        
+        public string Password { get; set; }
         public string Email { get; set; }
         public DateTime CreatedDate { get; set; }
         public string? NickName { get; set; }
         public TypePlayerBasket TypeBasketPlayer { get; set; }
+        public Sports SportsPlay { get; set; }
     }
 
 }
