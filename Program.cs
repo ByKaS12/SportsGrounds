@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using SportsGrounds.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddMvc();
+builder.Services.AddDbContext<SportsGrounds.Models.SportsGroundsContext>();
 
 var app = builder.Build();
 

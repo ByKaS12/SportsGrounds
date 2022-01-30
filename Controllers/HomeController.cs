@@ -26,6 +26,7 @@ namespace SportsGrounds.Controllers
 
             var json = JObject.Parse(response);
             var features = json["features"];
+            CRUD CRUD = new CRUD(_db);
             try
             {
                 foreach (var feature in features)
@@ -38,6 +39,13 @@ namespace SportsGrounds.Controllers
                     string name = (string)properties["name"];
                     var CompanyMetaData = properties["CompanyMetaData"];
                     string address = (string)CompanyMetaData["address"];
+                    Map map = new();
+                    map.Longitude = Longitude;
+                    map.Latitude = Latitude;
+                    map.Address = address;
+                    map.Type = TypeMaps.SportGround;
+                    CRUD.CreateMap(map);
+                    
 
                 }
             }
@@ -45,11 +53,8 @@ namespace SportsGrounds.Controllers
             {
             }
 
-
-        
-
             //TODO
-            return View();
+            return View("Index");
         }
     }
 }
