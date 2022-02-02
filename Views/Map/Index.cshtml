@@ -26,11 +26,25 @@
             {
                <text>
 
-               var placemark = new ymaps.Placemark([@item.Latitude,@item.Longitude]);
+               var placemark = new ymaps.Placemark([@item.Latitude,@item.Longitude],{
+                   balloonContent: [
+                       '<div>',
+                       '<form asp-action="GetInfObj" asp-controller="GeoObj">',
+                       '<label>Адрес:<input type="text" name="Address" value="@item.Address" disabled/></label>',
+                       '<label>Тип СО:<input type="text" name="Address" value="@item.Type" disabled/></label>',
+                       '<label>Широта:<input type="text" name="Latitude" value="@item.Latitude" disabled/></label>',
+                       '<label>Долгота:<input type="text" name="Longitude" value="@item.Longitude" disabled/></label>',
+                       '<input type="text" name="Id" value="@item.Id" disabled hidden/>',
+                       '<button type="submit">Подробнее</button>',
+                       '</form>',
+                       '</div>'
+                   
+                   ]
+                   
+               });
                myMap.geoObjects.add(placemark);
                </text>
 
-               
             }
         }
 }

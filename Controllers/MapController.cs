@@ -21,7 +21,7 @@ namespace SportsGrounds.Controllers
 
             string url = "https://search-maps.yandex.ru/v1/?text=category_id:(77500452834)&ll=38.078237,54.88628&spn=0.06,0.06&rspn=1&results=500&lang=ru_RU&apikey=b4a7ecbb-6ea1-40ba-b43d-03efb446b4a9";
             string urlTest = "https://search-maps.yandex.ru/v1/?text=category_id:(77500452834)&ll=37.61552,55.75697&spn=0.06,0.06&rspn=1&results=500&lang=ru_RU&apikey=b4a7ecbb-6ea1-40ba-b43d-03efb446b4a9";
-            GetRequest request = new GetRequest(urlTest);
+            GetRequest request = new GetRequest(url);
             request.Run();
             var response = request.Response;
 
@@ -55,7 +55,7 @@ namespace SportsGrounds.Controllers
             }
 
             //TODO
-            return View("Index");
+            return View("Index",CRUD.GetMaps());
         }
     }
 }
