@@ -11,7 +11,7 @@ using SportsGrounds.Models;
 namespace SportsGrounds.Migrations
 {
     [DbContext(typeof(SportsGroundsContext))]
-    [Migration("20220130122730_init")]
+    [Migration("20220202090301_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,6 @@ namespace SportsGrounds.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Login")

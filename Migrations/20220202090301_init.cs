@@ -31,7 +31,7 @@ namespace SportsGrounds.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Login = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     NickName = table.Column<string>(type: "TEXT", nullable: true),
                     TypeBasketPlayer = table.Column<int>(type: "INTEGER", nullable: false),
