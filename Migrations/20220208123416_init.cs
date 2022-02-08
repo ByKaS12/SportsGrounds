@@ -35,21 +35,33 @@ namespace SportsGrounds.Migrations
                     CreatedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     NickName = table.Column<string>(type: "TEXT", nullable: true),
                     TypeBasketPlayer = table.Column<int>(type: "INTEGER", nullable: false),
-                    SportsPlay = table.Column<int>(type: "INTEGER", nullable: false)
+                    SportsPlay = table.Column<int>(type: "INTEGER", nullable: false),
+                    MapId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    TimeToMeet = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Maps_MapId",
+                        column: x => x.MapId,
+                        principalTable: "Maps",
+                        principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_MapId",
+                table: "Users",
+                column: "MapId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Maps");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Maps");
         }
     }
 }

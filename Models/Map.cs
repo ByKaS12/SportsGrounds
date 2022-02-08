@@ -14,6 +14,7 @@
         public double Latitude { get; set; }
         public TypeMaps Type { get; set; }
         public string? Address { get; set; }
+        public virtual List<User>? Users { get; set; }
 
 
     }

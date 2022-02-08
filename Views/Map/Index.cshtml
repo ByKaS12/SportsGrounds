@@ -28,16 +28,8 @@
 
                var placemark = new ymaps.Placemark([@item.Latitude,@item.Longitude],{
                    balloonContent: [
-                       '<div>',
-                       '<form asp-action="GetInfObj" asp-controller="GeoObj">',
-                       '<label>Адрес:<input type="text" name="Address" value="@item.Address" disabled/></label>',
-                       '<label>Тип СО:<input type="text" name="Address" value="@item.Type" disabled/></label>',
-                       '<label>Широта:<input type="text" name="Latitude" value="@item.Latitude" disabled/></label>',
-                       '<label>Долгота:<input type="text" name="Longitude" value="@item.Longitude" disabled/></label>',
-                       '<input type="text" name="Id" value="@item.Id" disabled hidden/>',
-                       '<button type="submit">Подробнее</button>',
-                       '</form>',
-                       '</div>'
+                       '<div><form asp-action="GetInfObj" asp-controller="GeoObj" asp-route-id="@item.Id"><p>Адрес: @item.Address</p><p>Тип СО: @item.Type</p><p>Широта: @item.Latitude</p><p>Долгота: @item.Longitude</p><button type="submit">Подробнее</button></form></div>'
+
                    
                    ]
                    

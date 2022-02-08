@@ -11,7 +11,7 @@ using SportsGrounds.Models;
 namespace SportsGrounds.Migrations
 {
     [DbContext(typeof(SportsGroundsContext))]
-    [Migration("20220202090301_init")]
+    [Migration("20220208123416_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,6 +58,9 @@ namespace SportsGrounds.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("MapId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NickName")
                         .HasColumnType("TEXT");
 
@@ -68,12 +71,31 @@ namespace SportsGrounds.Migrations
                     b.Property<int>("SportsPlay")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime?>("TimeToMeet")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("TypeBasketPlayer")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MapId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SportsGrounds.Models.User", b =>
+                {
+                    b.HasOne("SportsGrounds.Models.Map", "Map")
+                        .WithMany("Users")
+                        .HasForeignKey("MapId");
+
+                    b.Navigation("Map");
+                });
+
+            modelBuilder.Entity("SportsGrounds.Models.Map", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
