@@ -27,6 +27,8 @@
         public string? NickName { get; set; }
         public TypePlayerBasket TypeBasketPlayer { get; set; }
         public Sports SportsPlay { get; set; }
+        public virtual Map? Map { get; set; }
+        public DateTime? TimeToMeet { get; set; }
     }
 
 }
