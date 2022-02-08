@@ -5,7 +5,7 @@
 <div class="text-center">
     <h1 class="display-4">Hello wolrd</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <div id="map" style="width: 1000px; height: 1000px"></div>
+    <div class="container" id="map" style="width: 1000px; height: 1000px"></div>
     <a asp-action="LoadGeoObjInServ" asp-controller="Map" >Загрузить данные на сервер</a>
     <a asp-action="GetGeoObjFromServ" asp-controller="Map" >Получить данные с сервера</a>
 <script type="text/javascript">
@@ -27,16 +27,13 @@
                <text>
 
                var placemark = new ymaps.Placemark([@item.Latitude,@item.Longitude],{
-                   balloonContent: [
-                       '<div><form asp-action="GetInfObj" asp-controller="GeoObj" asp-route-id="@item.Id"><p>Адрес: @item.Address</p><p>Тип СО: @item.Type</p><p>Широта: @item.Latitude</p><p>Долгота: @item.Longitude</p><button type="submit">Подробнее</button></form></div>'
+                   balloonContent: 
+                       '<div class="container"><div class="col"><div class="row-4">@if(item.PathImg==string.Empty){<img class="img-fluid rounded mx-auto d-block" src="https://via.placeholder.com/200"/>}else{<img src="@Url.Content("Files/" + @item.PathImg)"/>}<hr/></div><div class="row-6"><p>Адрес: @item.Address</p><p>Тип СО: @item.Type</p><p>Широта: @item.Latitude</p><p>Долгота: @item.Longitude</p><form asp-action="GetInfObj" asp-controller="GeoObj" asp-route-id="@item.Id"><button type="submit">Подробнее</button></form></div></div></div>'
 
-                   
-                   ]
-                   
                });
                myMap.geoObjects.add(placemark);
                </text>
-
+               
             }
         }
 }

@@ -17,7 +17,8 @@ namespace SportsGrounds.Migrations
                     Longitude = table.Column<double>(type: "REAL", nullable: false),
                     Latitude = table.Column<double>(type: "REAL", nullable: false),
                     Type = table.Column<int>(type: "INTEGER", nullable: false),
-                    Address = table.Column<string>(type: "TEXT", nullable: true)
+                    Address = table.Column<string>(type: "TEXT", nullable: true),
+                    PathImg = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -3,6 +3,13 @@
     <h4>Map</h4>
     <hr />
     <dl class="row">
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PathImg)
+        </dt>
+        <dd class = "col-sm-10">
+            @if(Model.PathImg==string.Empty){<img src="https://via.placeholder.com/450"/>}
+            else{<img src="@Url.Content("Files/" + @Model.PathImg)"/>} 
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Longitude)
         </dt>

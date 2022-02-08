@@ -11,7 +11,7 @@ using SportsGrounds.Models;
 namespace SportsGrounds.Migrations
 {
     [DbContext(typeof(SportsGroundsContext))]
-    [Migration("20220208123416_init")]
+    [Migration("20220208133648_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,10 @@ namespace SportsGrounds.Migrations
 
                     b.Property<double>("Longitude")
                         .HasColumnType("REAL");
+
+                    b.Property<string>("PathImg")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
