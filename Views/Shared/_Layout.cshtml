@@ -31,6 +31,25 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Feedback" asp-action="Index">Обратная связь</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item"  style="position: relative; left: 55%">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Index">@User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item"  style="position: relative; left: 55%">
+                                    <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <input class="btn btn-light" style="background-color: inherit" type="submit" value="Выход" />
+                                    </form>
+                            </li>
+                        }else
+                        {
+                            <li class="nav-item" style="position: relative; left: 65%">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Вход</a>
+                            </li>
+                            <li class="nav-item" style="position: relative; left: 65%">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Регистрация</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

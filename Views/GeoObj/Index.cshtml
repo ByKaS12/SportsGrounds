@@ -1,8 +1,9 @@
 ﻿@model SportsGrounds.Models.Map
-<div>
+<div class="container">
     <h4>Map</h4>
     <hr />
-    <dl class="row">
+    <div class="row">
+        <dl class="col-6">
                 <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PathImg)
         </dt>
@@ -35,8 +36,61 @@
             @Html.DisplayFor(model => model.Address)
         </dd>
     </dl>
+       <div class="col-4" >
+           <table class="table table-light table-hover table-sm">
+                 <thead>
+                     <tr>
+                         <th scope="col">#</th>
+                         <th scope="col">Участник</th>
+                        @if(Model.Type== Models.TypeMaps.BasketGround)
+                        {
+                         <th scope="col">Тип игрока</th>
+                        }
+
+                         <th scope="col">Дата</th>
+                         <th scope="col">Время</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     @foreach (var item in Model.Users)
+                    {
+                     int i = 1;
+                     <tr>
+                         <th scope="row">@i</th>
+                         @if(item.NickName!=null){
+                         <td>@item.NickName</td>
+                         }else{
+                         <td>@item.UserName</td>
+                         }
+                            @if(Model.Type == Models.TypeMaps.BasketGround)
+                            {
+                                if(item.TypeBasketPlayer != null)
+                                {
+                                    <td>@item.TypeBasketPlayer</td>
+                                }
+                                else
+                                {
+                                   <td>Не указан</td> 
+                                }
+                            }
+                            <td>@item.TimeToMeet.Value.ToShortDateString()</td>
+                         <td>@item.TimeToMeet.Value.ToShortTimeString()</td> 
+                     </tr>
+                     i++;
+                    }
+
+                 </tbody>
+
+           </table>
+       </div>
+    </div>
+    
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <form asp-action="Participate" asp-route-name="@User.Identity?.Name" >
+        <input type="time" name="MeetTime" value="@DateTime.Now" />
+        <input type="text" hidden name="MapId" value="@Model.Id" />
+        <button type="submit" >Участвовать</button>
+    </form>
+    <a asp-action="Index" asp-controller="Map">Вернуться к карте</a>
 </div>

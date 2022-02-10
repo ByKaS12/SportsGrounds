@@ -63,7 +63,16 @@ namespace SportsGrounds.Classes
 
         public User GetUser(Guid Id)
         {
-            var user = _db.Users.FirstOrDefault(u => u.Id == Id);
+            var user = _db.Users.FirstOrDefault(u => u.Id == Convert.ToString(Id));
+            if (user != null)
+                return user;
+
+            return null;
+
+        }
+        public User? GetUserToName(string name)
+        {
+            var user = _db.Users.FirstOrDefault(u => u.UserName == name);
             if (user != null)
                 return user;
 

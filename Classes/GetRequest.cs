@@ -4,8 +4,8 @@ namespace SportsGrounds.Classes
 {
     public class GetRequest
     {
-        HttpWebRequest _request;
-        string _address;
+        private HttpWebRequest _request;
+        public string _address;
 
         public string Response { get; set; }
         public GetRequest(string address)

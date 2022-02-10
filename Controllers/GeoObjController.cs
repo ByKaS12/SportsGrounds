@@ -22,6 +22,31 @@ namespace SportsGrounds.Controllers
                 return NotFound();
             return View("Index",Map);
         }
+        public IActionResult Participate (DateTime MeetTime,Guid MapId,string name)
+        {
+            CRUD CRUD = new(_db);
+            var User = CRUD.GetUserToName(name);
+            if (User != null)
+            {
+                var Map = CRUD.GetMap(MapId);
+                if (Map != null)
+                {
+                    User.TimeToMeet = MeetTime;
+                    CRUD.UpdateUser(User);
+                    Map.Users.Add(User);
+                    CRUD.UpdateMap(Map);
+                    return View("Index", Map);
+                }
+                else
+                {
+                    return View("Index", this.Map);
+                }
 
+            }
+            else
+            {
+                return View("Index", this.Map);
+            }
+        }
     }
 }

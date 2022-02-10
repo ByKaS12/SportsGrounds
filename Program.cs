@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SportsGrounds.Models;
 
@@ -7,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddMvc();
 builder.Services.AddDbContext<SportsGrounds.Models.SportsGroundsContext>();
-
+builder.Services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<SportsGroundsContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,11 +24,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthorization();
+app.UseAuthentication();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.UseAuthorization();
 
 app.MapRazorPages();
  

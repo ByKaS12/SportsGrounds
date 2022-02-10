@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace SportsGrounds.Models
 {
-    public class SportsGroundsContext: DbContext
+    public class SportsGroundsContext: IdentityDbContext<User>
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Map> Maps { get; set; }
+        public DbSet<Map>? Maps { get; set; }
 
 
         public SportsGroundsContext()

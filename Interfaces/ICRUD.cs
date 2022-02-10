@@ -13,6 +13,7 @@ namespace SportsGrounds.Interfaces
         public void UpdateUser(User User);
         public void DeleteUser(User User);
         public User GetUser(Guid Id);
+        public User? GetUserToName(string name);
         public List<User> GetUsers();
         
         
