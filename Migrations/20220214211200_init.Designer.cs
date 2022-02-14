@@ -11,7 +11,7 @@ using SportsGrounds.Models;
 namespace SportsGrounds.Migrations
 {
     [DbContext(typeof(SportsGroundsContext))]
-    [Migration("20220209043619_init")]
+    [Migration("20220214211200_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

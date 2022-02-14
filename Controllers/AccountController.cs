@@ -17,7 +17,7 @@ namespace SportsGrounds.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        public IActionResult Index() => View();
+        public IActionResult Index(string Name) => View(new CRUD(_db).GetUserToName(Name));
         [HttpGet]
         public IActionResult Login()
         {
