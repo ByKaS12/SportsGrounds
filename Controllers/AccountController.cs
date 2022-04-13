@@ -55,6 +55,23 @@ namespace SportsGrounds.Controllers
 
         [HttpGet]
         public IActionResult Register() => View();
+
+        public IActionResult Change(User user)
+        {
+            var DbUser = _db.Users.FirstOrDefault(u => u.Id == user.Id);
+            if (DbUser != null)
+            {
+                if(user.NickName!=null)
+                    DbUser.NickName = user.NickName;
+                DbUser.SportsPlay = user.SportsPlay;
+                DbUser.TypeBasketPlayer = user.TypeBasketPlayer;
+                if (user.PhoneNumber != null)
+                    DbUser.PhoneNumber = user.PhoneNumber;
+                _db.Users.Update(DbUser);
+                _db.SaveChanges();
+            }
+            return View("Index", DbUser);
+        }
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)

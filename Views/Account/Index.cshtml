@@ -4,12 +4,16 @@
 <h4>User Account</h4>
 <hr />
 <div class="row">
-        <dl class="col-6">
+    @if (Model != null)
+        {
+            <form asp-action="Change" asp-controller="Account">
+                <input value="@Model.Id" hidden name="Id"/>
+                       <dl class="col-6">
                 <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model.NickName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
+            <input value="@Model.NickName" name="NickName"/>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
@@ -21,20 +25,39 @@
             @Html.DisplayNameFor(model => model.SportsPlay)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SportsPlay)
+            <select class="input_style" name="SportsPlay">
+                <option class="text" value="@Model.SportsPlay" selected>@Model.SportsPlay</option>
+                <option class="text" value="@SportsGrounds.Models.Sports.Volleyball">@SportsGrounds.Models.Sports.Volleyball</option>
+                <option class="text" value="@SportsGrounds.Models.Sports.Football">@SportsGrounds.Models.Sports.Football</option>
+                <option class="text" value="@SportsGrounds.Models.Sports.Other">@SportsGrounds.Models.Sports.Other</option>
+            </select>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TypeBasketPlayer)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TypeBasketPlayer)
+                        <select class="input_style" name="TypeBasketPlayer">
+                <option class="text" value="@Model.TypeBasketPlayer" selected>@Model.TypeBasketPlayer</option>
+                <option class="text" value="@SportsGrounds.Models.TypePlayerBasket.Center">@SportsGrounds.Models.TypePlayerBasket.Center</option>
+                <option class="text" value="@SportsGrounds.Models.TypePlayerBasket.PowerForward">@SportsGrounds.Models.TypePlayerBasket.PowerForward</option>
+                <option class="text" value="@SportsGrounds.Models.TypePlayerBasket.ShootingGuard">@SportsGrounds.Models.TypePlayerBasket.ShootingGuard</option>
+                <option class="text" value="@SportsGrounds.Models.TypePlayerBasket.SmallForward">@SportsGrounds.Models.TypePlayerBasket.SmallForward</option>
+
+            </select>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
+                <input type="tel" value="@Model.PhoneNumber"  name="PhoneNumber"/>   
         </dd>
     </dl>
+    <button type="submit">Change information</button>
+            </form>
+        }
+
+
+  
+       
  </div>
 </div>

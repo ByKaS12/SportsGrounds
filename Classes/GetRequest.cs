@@ -4,6 +4,10 @@ namespace SportsGrounds.Classes
 {
     public class GetRequest
     {
+
+
+
+
         private HttpWebRequest _request;
         public string _address;
 
@@ -26,10 +30,7 @@ namespace SportsGrounds.Classes
                 }
 
             }
-            catch (Exception)
-            {
-            }
-
+            catch (Exception){ }
         }
     }
 }

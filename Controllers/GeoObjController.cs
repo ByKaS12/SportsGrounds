@@ -33,8 +33,12 @@ namespace SportsGrounds.Controllers
                 {
                     User.TimeToMeet = MeetTime;
                     CRUD.UpdateUser(User);
-                    Map.Users.Add(User);
-                    CRUD.UpdateMap(Map);
+                    if (Map.Users.FirstOrDefault(u => u.UserName == User.UserName) == null)
+                    {
+                        Map.Users.Add(User);
+                        CRUD.UpdateMap(Map);
+                    }
+
                     return View("Index", Map);
                 }
                 else
